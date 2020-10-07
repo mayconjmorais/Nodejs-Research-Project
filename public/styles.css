@@ -1,0 +1,170 @@
+/*	
+	Side Navigation Menu V2, RWD
+	===================
+	Author: @heyPablete
+
+ */
+
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  line-height: 1.42em;
+  color: #a7a1ae;
+  background-color: #1f2739;
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: 300;
+  line-height: 1em;
+  text-align: center;
+  color: #4dc3fa;
+}
+
+h2 {
+  font-size: 1em;
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height: 1em;
+  padding-bottom: 2em;
+  color: #fb667a;
+}
+
+.blue {
+  color: #185875;
+}
+
+.container th h1 {
+  font-weight: bold;
+  font-size: 1em;
+  text-align: left;
+  color: #185875;
+}
+
+.container td {
+  font-weight: normal;
+  font-size: 1em;
+  -webkit-box-shadow: 0 2px 2px -2px #0e1119;
+  -moz-box-shadow: 0 2px 2px -2px #0e1119;
+  box-shadow: 0 2px 2px -2px #0e1119;
+}
+
+.container {
+  text-align: left;
+  overflow: hidden;
+  width: 70%;
+  margin: 0 auto;
+  display: table;
+  padding: 0 0 6em 0;
+}
+
+.container td,
+.container th {
+  padding-bottom: 1%;
+  padding-top: 1%;
+  padding-left: 1%;
+}
+
+/* Background-color of the odd rows */
+.container tr:nth-child(odd) {
+  background-color: #323c50;
+}
+
+/* Background-color of the even rows */
+.container tr:nth-child(even) {
+  background-color: #2c3446;
+}
+
+.container th {
+  background-color: #1f2739;
+}
+
+.deleteButton {
+  box-shadow: inset 0px 39px 0px -24px #e67a73;
+  background-color: #e4685d;
+  border-radius: 4px;
+  border: 1px solid #ffffff;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  padding: 6px 15px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #b23e35;
+}
+.deleteButton:hover {
+  background-color: #eb675e;
+}
+.deleteButton:active {
+  position: relative;
+  top: 1px;
+}
+
+.editButton {
+  box-shadow: inset 0px 39px 0px -24px #3dc21b;
+  background-color: #44c767;
+  border-radius: 4px;
+  border: 1px solid #18ab29;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  padding: 6px 15px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #2f6627;
+}
+.editButton:hover {
+  background-color: #5cbf2a;
+}
+.editButton:active {
+  position: relative;
+  top: 1px;
+}
+
+.addSaveButton {
+  margin: auto;
+  box-shadow: inset 0px 39px 0px -24px #3dc21b;
+  background-color: #44c767;
+  border-radius: 4px;
+  border: 1px solid #18ab29;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  padding: 6px 15px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #2f6627;
+}
+
+input[type=text], 
+  input[type=number], 
+  input[type=date] {
+  width: 150px;
+  height: 20px;
+  margin: 5px;
+  padding-left: 10px; 
+  border-radius: 0 5px 5px 0;
+  border: solid 1px #cbc9c9; 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  background: #fff; 
+  }
+
+  .grid-container {
+    background-color: #323c50;
+    width: 30%;
+    margin: auto;
+    display: grid;
+  }
+
+  .grid-item {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+  }

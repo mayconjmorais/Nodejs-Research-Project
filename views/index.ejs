@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= pageTitle %></title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<script>
+  function edit_row(td) {
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("index").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("idCovid").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("dateCovid").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("casesCovid").value = selectedRow.cells[3].innerHTML;
+    document.getElementById("deathsCovid").value = selectedRow.cells[4].innerHTML;
+    document.getElementById("namefr").value = selectedRow.cells[5].innerHTML;
+    document.getElementById("nameen").value = selectedRow.cells[6].innerHTML;
+
+    document.getElementById("btAdd").hidden = "hidden";
+    document.getElementById("btSave").style.display = "block";
+  }
+
+  function getAction(parameter) {
+    document.getElementById("formAdd").action = parameter;
+  }
+
+  function addCovidCase(){
+    getAction('/add-to-list');
+    alert("Case added successfully!");
+  }
+</script>
+
+<body>
+  <main>
+    <div>
+      <form id="formAdd" method="POST">
+        <div class="grid-container">
+          <div class="grid-item">
+            <input type="text" id="index" name="index" hidden="hidden">
+            <input type="text" id="idCovid" name="idCovid" placeholder="ID" required="true">
+            <input type="date" id="dateCovid" name="dateCovid" placeholder="Date" required="true">
+          </div>
+          <div class="grid-item">
+            <input type="number" id="casesCovid" name="casesCovid" placeholder="Cases" required="true">
+            <input type="number" id="deathsCovid" name="deathsCovid" placeholder="Deaths" required="true">
+          </div>
+          <div class="grid-item">
+            <input type="text" id="namefr" name="namefr" placeholder="Name FR" required="true">
+            <input type="text" id="nameen" name="nameen" placeholder="Name EN" required="true">
+          </div>
+          <div class="grid-item">
+            <button id="btAdd" class="addSaveButton" type="submit" onclick="addCovidCase()">Add</button>
+            <button id="btSave" class="addSaveButton" type="submit" onclick="getAction('/update-covid')"
+              hidden='hidden'>Save</button>
+          </div>
+        </div>
+      </form>
+    </div><br>
+    <div>
+      <form action="/create-file" method="GET">
+        <div class="grid-container">
+          <div class="grid-item">
+            <button class="editButton" name="createFile" type="submit">Create File</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <% if (records.length > 0) { %>
+    <div class="grid">
+      <h1>List Size: <%= records.length %> </h1>
+      <table class="container">
+        <thead>
+          <tr>
+            <th hidden="hidden"></th>
+            <th>
+              <h1>ID</h1>
+            </th>
+            <th>
+              <h1>Date</h1>
+            </th>
+            <th>
+              <h1>Cases</h1>
+            </th>
+            <th>
+              <h1>Deaths</h1>
+            </th>
+            <th>
+              <h1>Name FR</h1>
+            </th>
+            <th>
+              <h1>Name EN</h1>
+            </th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <% for(var i=0; i<records.length; i++) {%>
+        <tr>
+          <td hidden="hidden"><%= i %></th>
+          <td><%= records[i].id %></td>
+          <td contenteditable='true'><%= records[i].date %></td>
+          <td><%= records[i].cases %></td>
+          <td><%= records[i].deaths %></td>
+          <td><%= records[i].name_fr %></td>
+          <td><%= records[i].name_en %></td>
+          <td>
+            <button class="editButton" id="btEdit" name="btEdit" type="button" onclick="edit_row(this)">Edit</button>
+          </td>
+          <td>
+            <form action="/delete-covid" method="POST">
+              <button class="deleteButton" value="<%= i %>" name="btDelete" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
+    <% } else { %>
+    <h1>No Records Found!</h1>
+    <% } %>
+  </main>
+</body>
+
+</html>
